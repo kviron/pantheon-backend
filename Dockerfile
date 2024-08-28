@@ -4,7 +4,7 @@ WORKDIR /app
 # Копируем package.json и package-lock.json
 COPY package*.json ./
 # Установка зависимостей
-RUN yarn install --production
+RUN yarn install
 # Копируем остальные файлы приложения
 COPY . .
 
