@@ -8,6 +8,10 @@ import { UpdateUserDto } from './dto/update-user.dto'
 export class UserService {
 	constructor(private readonly prismaService: PrismaService) {}
 
+	getList() {
+		return this.prismaService.user.findMany()
+	}
+
 	getById(id: string) {
 		return this.prismaService.user.findUnique({
 			where: { id }

@@ -1,8 +1,10 @@
-import { PartialType } from '@nestjs/swagger'
+import { ApiProperty, PartialType } from '@nestjs/swagger'
 import { CreateUserDto } from './create-user.dto'
 import {
 	IsDateString,
+	IsEmail,
 	IsEnum,
+	IsNotEmpty,
 	IsOptional,
 	IsPhoneNumber
 } from 'class-validator'
@@ -10,6 +12,11 @@ import { Gender } from '@prisma/client'
 import { Transform } from 'class-transformer'
 
 export class UpdateUserDto extends PartialType(CreateUserDto) {
+	@ApiProperty()
+	@IsEmail()
+	@IsNotEmpty()
+	email: string
+
 	@IsOptional()
 	name?: string
 
